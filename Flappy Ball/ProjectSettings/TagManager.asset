@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Main Camera Rig
   layers:
   - Default
   - TransparentFX
@@ -13,14 +14,14 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Magnet Layer
+  - Player
+  - Ignore Surface
+  - Magnet Tower
+  - GrapplePoint
+  - Pushable
+  - Visualize
+  - Metal Tree
   - 
   - 
   - 
