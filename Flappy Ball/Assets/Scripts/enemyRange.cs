@@ -11,9 +11,11 @@ public class enemyRange : MonoBehaviour
         {
             ani.SetBool("walk", false);
             ani.SetBool("run", false);
-            ani.SetBool("attack01", false);
+            ani.SetBool("attack01", true);
             enemy.exploding = true;
             GetComponent<SphereCollider>().enabled = false;
+            Debug.Log("aaa");
+            Destroy(gameObject, 2f);
         }
     }
 }

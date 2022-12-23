@@ -7,7 +7,7 @@ public class bombEnemy : MonoBehaviour
     public Animator ani;
     public int direction;
     public float speedWalk;
-    public float speedRun;
+    // public float speedRun;
     public Transform target;
     public bool exploding;
 
@@ -28,9 +28,9 @@ public class bombEnemy : MonoBehaviour
 
     public void Behaviour()
     {
-        if (Mathf.Abs(transform.position.x - target.transform.position.x) > visionRange && !exploding)
+        if (Mathf.Abs(transform.position.x - target.transform.position.x) < visionRange && !exploding)
         {
-            ani.SetBool("run", false);
+            // ani.SetBool("run", false);
             timer += 1 * Time.deltaTime;
             if (timer >= 3)
             {
@@ -66,60 +66,60 @@ public class bombEnemy : MonoBehaviour
                 break;
             }
         }
-        // else
-        // {
-        //     if (Mathf.Abs(transform.position.x - target.transform.position.x) > explosionRange && !exploding)
-        //     {
-        //         if (transform.position.x < target.transform.position.x)
-        //         {
-        //             ani.SetBool("walk", false);
-        //             ani.SetBool("run", true);
-        //             transform.Translate(Vector3.forward * speedRun * Time.deltaTime);
-        //             transform.rotation = Quaternion.Euler(0,270,0);
-        //             ani.SetBool("attack01", false);
-        //         }
-        //         else
-        //         {
-        //             ani.SetBool("walk", false);
-        //             ani.SetBool("run", true);
-        //             transform.Translate(Vector3.forward * speedRun * Time.deltaTime);
-        //             transform.rotation = Quaternion.Euler(0,90,0);
-        //             ani.SetBool("attack01", false);
-        //         }
-        //     }
-        //     else
-        //     {
-        //         if (!exploding)
-        //         {
-        //             if (transform.position.x < target.transform.position.x)
-        //             {
-        //                 transform.rotation = Quaternion.Euler(0,270,0);
-        //             }
-        //             else
-        //             {
-        //                 transform.rotation = Quaternion.Euler(0,90,0);
-        //             }
-        //             ani.SetBool("walk", false);
-        //             ani.SetBool("run", false);
-        //         }
-        //     }
-        // }
+        else
+        {
+            if (Mathf.Abs(transform.position.x - target.transform.position.x) > explosionRange && !exploding)
+            {
+                if (transform.position.x < target.transform.position.x)
+                {
+                    ani.SetBool("walk", true);
+                    // ani.SetBool("run", true);
+                    transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
+                    transform.rotation = Quaternion.Euler(0,270,0);
+                    ani.SetBool("attack01", false);
+                }
+                else
+                {
+                    ani.SetBool("walk", true);
+                    // ani.SetBool("run", true);
+                    transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
+                    transform.rotation = Quaternion.Euler(0,90,0);
+                    ani.SetBool("attack01", false);
+                }
+            }
+            else
+            {
+                if (!exploding)
+                {
+                    if (transform.position.x < target.transform.position.x)
+                    {
+                        transform.rotation = Quaternion.Euler(0,0,0);
+                    }
+                    else
+                    {
+                        transform.rotation = Quaternion.Euler(0,0,0);
+                    }
+                    ani.SetBool("walk", false);
+                    ani.SetBool("run", false);
+                }
+            }
+        }
     }
 
-    public void FinalAnimation()
-    {
-        ani.SetBool("attack01", false);
-        exploding = false;
-        range.GetComponent<SphereCollider>().enabled = true;
-    }
+    // public void FinalAnimation()
+    // {
+    //     ani.SetBool("attack01", false);
+    //     exploding = false;
+    //     range.GetComponent<SphereCollider>().enabled = true;
+    // }
 
-    public void ColliderAttackTrue()
-    {
-        hit.GetComponent<SphereCollider>().enabled = true;
-    }
+    // public void ColliderAttackTrue()
+    // {
+    //     hit.GetComponent<SphereCollider>().enabled = true;
+    // }
 
-    public void ColliderAttackFalse()
-    {
-        hit.GetComponent<SphereCollider>().enabled = true;
-    }
+    // public void ColliderAttackFalse()
+    // {
+    //     hit.GetComponent<SphereCollider>().enabled = true;
+    // }
 }
