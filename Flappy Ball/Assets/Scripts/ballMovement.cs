@@ -7,10 +7,10 @@ public class ballMovement : MonoBehaviour
     public float doubleJumpSpeed;
     public Rigidbody rb;
     private bool m_isGrounded;
-    public float fallMultiplier = 0.5f;
-    public float lowJumpMultiplier = 1f;
     private bool canDoubleJump;
     public float coinsColected;
+    public float lives = 3f;
+    public Vector3 respawnPoint;
 
     void Start()
     {
@@ -68,5 +68,25 @@ public class ballMovement : MonoBehaviour
             coinsColected++;
             Destroy(other.transform.gameObject);
         }
+    }
+    
+    void Respawn()
+    {
+        transform.position = respawnPoint;
+        
+    }
+   void OnTriggerEnter(Collider col)
+    {
+        if(col.transform.gameObject.tag == "batEnemy")
+        {
+            lives--;
+            Debug.Log("-1 vida");
+        }
+        if(lives == 0f)
+        {
+            Respawn();
+            Debug.Log("¡¡¡YOU LOST!!!");
+        }
+
     }
 }
