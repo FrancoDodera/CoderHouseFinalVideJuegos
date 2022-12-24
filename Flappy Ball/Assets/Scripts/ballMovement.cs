@@ -10,6 +10,7 @@ public class ballMovement : MonoBehaviour
     public float fallMultiplier = 0.5f;
     public float lowJumpMultiplier = 1f;
     private bool canDoubleJump;
+    public float coinsColected;
 
     void Start()
     {
@@ -60,6 +61,12 @@ public class ballMovement : MonoBehaviour
         if(other.gameObject.CompareTag("floor"))
         {
             m_isGrounded = true;
+        }
+    
+        if(other.transform.gameObject.tag == "Coin")
+        {
+            coinsColected++;
+            Destroy(other.transform.gameObject);
         }
     }
 }
