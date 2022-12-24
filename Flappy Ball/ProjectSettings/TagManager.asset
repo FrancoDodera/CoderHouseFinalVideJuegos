@@ -7,6 +7,7 @@ TagManager:
   - Main Camera Rig
   - floor
   - bomb
+  - Coin
   layers:
   - Default
   - TransparentFX
