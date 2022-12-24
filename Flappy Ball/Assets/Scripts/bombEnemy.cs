@@ -10,7 +10,8 @@ public class bombEnemy : MonoBehaviour
     public bool exploding;
     public bool isRigth;
     public GameObject range;
-    public GameObject hit;
+    // public GameObject hit;
+    // public float timeToHit;
 
     void Start()
     {
@@ -60,5 +61,14 @@ public class bombEnemy : MonoBehaviour
             Destroy(gameObject,0f);
         }
     }
-
+    
+    // void HitTimer()
+    // {
+    //     timeToHit -= Time.deltaTime;
+    //     if(timer <= 0)
+    //     {
+    //         timer = timeChanger;
+    //         isRigth = !isRigth;
+    //     }
+    // }
 }

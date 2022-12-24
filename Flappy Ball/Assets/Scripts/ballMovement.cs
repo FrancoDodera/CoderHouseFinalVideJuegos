@@ -11,6 +11,9 @@ public class ballMovement : MonoBehaviour
     public float coinsColected;
     public float lives = 3f;
     public Vector3 respawnPoint;
+    public float timer;
+    float damage = 1.5f;
+    public GameObject hit;
 
     void Start()
     {
@@ -20,6 +23,11 @@ public class ballMovement : MonoBehaviour
     private void Update()
     {
         Jump();
+        if(lives == 0f)
+        {
+            Respawn();
+            Debug.Log("¡¡¡YOU LOST!!!");
+        }
     }
     void FixedUpdate()
     {
@@ -75,18 +83,29 @@ public class ballMovement : MonoBehaviour
         transform.position = respawnPoint;
         
     }
-   void OnTriggerEnter(Collider col)
+
+    void OnTriggerEnter(Collider col)
     {
         if(col.transform.gameObject.tag == "batEnemy")
         {
             lives--;
             Debug.Log("-1 vida");
         }
-        if(lives == 0f)
-        {
-            Respawn();
-            Debug.Log("¡¡¡YOU LOST!!!");
-        }
+        
+    }
 
+    void OnTriggerStay(Collider col)
+    {
+        if (col.CompareTag("hit"))
+        {
+            timer += Time.deltaTime;
+            if(timer >= damage)
+            {
+                Debug.Log("ahora si?");
+                Destroy(hit);
+                lives--;
+                timer = 0;
+            }
+        }
     }
 }
