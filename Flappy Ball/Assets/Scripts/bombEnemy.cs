@@ -1,125 +1,68 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class bombEnemy : MonoBehaviour
 {
-    public int rutine;
+    public float timeChanger = 4f;
     public float timer;
     public Animator ani;
-    public int direction;
+    // public int direction;
     public float speedWalk;
-    // public float speedRun;
-    public Transform target;
+    // public Transform target;
     public bool exploding;
-
-    public float visionRange;
-    public float explosionRange;
+    public bool isRigth;
+    //public float visionRange;
+    // public float explosionRange;
     public GameObject range;
     public GameObject hit;
 
     void Start()
     {
         ani = GetComponent<Animator>();
+        timer = timeChanger;
     }
 
     void Update()
     {
         Behaviour();
+        Crono();
     }
 
     public void Behaviour()
     {
-        if (Mathf.Abs(transform.position.x - target.transform.position.x) < visionRange && !exploding)
+        if (!exploding)
         {
-            // ani.SetBool("run", false);
-            timer += 1 * Time.deltaTime;
-            if (timer >= 3)
+            if(isRigth == true)
             {
-                rutine = Random.Range(0, 2);
-                timer = 0;
-            }
-
-            switch (rutine)
-            {
-                case 0:
-                    ani.SetBool("walk", false);
-                    break;
-
-                case 1:
-                    direction = Random.Range(0, 2);
-                    rutine++;
-                    break;
-
-                case 2:
-                    switch (direction)
-                    {
-                        case 0:
-                            transform.rotation = Quaternion.Euler(0,270,0);
-                            transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
-                            break;
-
-                        case 1:
-                            transform.rotation = Quaternion.Euler(0,90,0);
-                            transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
-                            break;
-                    }
+                transform.position += new Vector3(0.1f,0,0) * speedWalk * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0,90,0);
                 ani.SetBool("walk", true);
-                break;
             }
-        }
-        else
-        {
-            if (Mathf.Abs(transform.position.x - target.transform.position.x) > explosionRange && !exploding)
+            if(isRigth == false)
             {
-                if (transform.position.x < target.transform.position.x)
-                {
-                    ani.SetBool("walk", true);
-                    // ani.SetBool("run", true);
-                    transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
-                    transform.rotation = Quaternion.Euler(0,270,0);
-                    ani.SetBool("attack01", false);
-                }
-                else
-                {
-                    ani.SetBool("walk", true);
-                    // ani.SetBool("run", true);
-                    transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
-                    transform.rotation = Quaternion.Euler(0,90,0);
-                    ani.SetBool("attack01", false);
-                }
-            }
-            else
-            {
-                if (!exploding)
-                {
-                    if (transform.position.x < target.transform.position.x)
-                    {
-                        transform.rotation = Quaternion.Euler(0,0,0);
-                    }
-                    else
-                    {
-                        transform.rotation = Quaternion.Euler(0,0,0);
-                    }
-                    ani.SetBool("walk", false);
-                    ani.SetBool("run", false);
-                }
+                transform.position += new Vector3(-0.1f,0,0) * speedWalk * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0,270,0);
+                ani.SetBool("walk", true);
             }
         }
     }
 
-    // public void FinalAnimation()
-    // {
-    //     ani.SetBool("attack01", false);
-    //     exploding = false;
-    //     range.GetComponent<SphereCollider>().enabled = true;
-    // }
+    public void Crono()
+    {
+        timer -= Time.deltaTime;
+        if(timer <= 0)
+        {
+            timer = timeChanger;
+            isRigth = !isRigth;
+        }
+    }
+    
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("wall"))
+        {
+            Destroy(gameObject,0f);
+        }
+    }
 
-    // public void ColliderAttackTrue()
-    // {
-    //     hit.GetComponent<SphereCollider>().enabled = true;
-    // }
-
-    // public void ColliderAttackFalse()
-    // {
-    //     hit.GetComponent<SphereCollider>().enabled = true;
-    // }
 }

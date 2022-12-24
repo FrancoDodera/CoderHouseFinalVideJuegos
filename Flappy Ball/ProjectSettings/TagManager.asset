@@ -7,6 +7,8 @@ TagManager:
   - Main Camera Rig
   - floor
   - bomb
+  - wall
+  - edge
   layers:
   - Default
   - TransparentFX

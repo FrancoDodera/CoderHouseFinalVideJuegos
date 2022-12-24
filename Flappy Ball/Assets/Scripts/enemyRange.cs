@@ -10,7 +10,6 @@ public class enemyRange : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             ani.SetBool("walk", false);
-            ani.SetBool("run", false);
             ani.SetBool("attack01", true);
             enemy.exploding = true;
             GetComponent<SphereCollider>().enabled = false;
