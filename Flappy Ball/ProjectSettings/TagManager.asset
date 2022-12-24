@@ -8,6 +8,7 @@ TagManager:
   - floor
   - bomb
   - Coin
+  - wall
   layers:
   - Default
   - TransparentFX
