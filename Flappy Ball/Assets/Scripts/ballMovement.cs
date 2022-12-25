@@ -14,13 +14,7 @@ public class ballMovement : MonoBehaviour
     public float timer;
     float damage = 2f;
     public GameObject hit;
-    public GameObject vida3;
-    public GameObject vida2;
-    public GameObject vida1;
-    public GameObject corazonVacio3;
-    public GameObject corazonVacio2;
-    public GameObject corazonVacio1;
-    public GameObject textDetected;
+
 
     void Start()
     {
@@ -57,6 +51,8 @@ public class ballMovement : MonoBehaviour
             {
                 rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
                 canDoubleJump = true;
+                Instantiate(SonidoSalto);
+
             }
             else
             {
@@ -112,6 +108,7 @@ public class ballMovement : MonoBehaviour
         {
             coinsColected++;
             Destroy(col.gameObject);
+            Instantiate(coincollect);
         }
     }
 
