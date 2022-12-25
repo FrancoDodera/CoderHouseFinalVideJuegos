@@ -12,7 +12,7 @@ public class ballMovement : MonoBehaviour
     public float lives = 3f;
     public Vector3 respawnPoint;
     public float timer;
-    float damage = 1.5f;
+    float damage = 2f;
     public GameObject hit;
 
     void Start()
@@ -71,11 +71,7 @@ public class ballMovement : MonoBehaviour
             m_isGrounded = true;
         }
     
-        if(other.transform.gameObject.tag == "Coin")
-        {
-            coinsColected++;
-            Destroy(other.transform.gameObject);
-        }
+        
     }
     
     void Respawn()
@@ -91,8 +87,24 @@ public class ballMovement : MonoBehaviour
             lives--;
             Debug.Log("-1 vida");
         }
+
+         if(col.transform.gameObject.tag == "Coin")
+        {
+            coinsColected++;
+            Destroy(col.gameObject);
+        }
         
     }
+   
+    
+
+
+    public GameObject vida3;
+    public GameObject vida2;
+    public GameObject vida1;
+    public GameObject corazonVacio3;
+    public GameObject corazonVacio2;
+    public GameObject corazonVacio1;
 
     void OnTriggerStay(Collider col)
     {
@@ -105,6 +117,20 @@ public class ballMovement : MonoBehaviour
                 Destroy(hit);
                 lives--;
                 timer = 0;
+                vida3.SetActive(false);
+                corazonVacio3.SetActive(true);
+                if(lives == 1)
+                {
+                    vida2.SetActive(false);
+                    corazonVacio2.SetActive(true);
+                }
+                if(lives == 0)
+                {
+                    vida1.SetActive(false);
+                    corazonVacio1.SetActive(true);
+                }
+
+                
             }
         }
     }
