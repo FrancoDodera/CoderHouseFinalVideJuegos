@@ -20,7 +20,7 @@ public class ballsMovement : MonoBehaviour
     public GameObject corazonVacio3;
     public GameObject corazonVacio2;
     public GameObject corazonVacio1;
-    public GameObject textDetected;
+    public GameObject GameOver;
     public GameObject SonidoSalto;
     public GameObject coincollect;
 
@@ -28,7 +28,7 @@ public class ballsMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         m_isGrounded = true;
-        textDetected.SetActive(false);
+        GameOver.SetActive(false);
     }
     private void Update()
     {
@@ -36,7 +36,7 @@ public class ballsMovement : MonoBehaviour
         if(lives == 0f)
         {
             Respawn();
-            Debug.Log("¡¡¡YOU LOST!!!");
+            GameOver.SetActive(true);
         }
     }
     void FixedUpdate()
@@ -145,10 +145,10 @@ public class ballsMovement : MonoBehaviour
             }
         }
 
-        if (col.CompareTag("door"))
-        {
-            textDetected.SetActive(true);
-        }
+        // if (col.CompareTag("door"))
+        // {
+        //     textDetected.SetActive(true);
+        // }
     }
 }
 
