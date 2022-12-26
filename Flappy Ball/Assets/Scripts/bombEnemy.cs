@@ -54,13 +54,7 @@ public class bombEnemy : MonoBehaviour
         }
     }
     
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag("wall"))
-        {
-            Destroy(gameObject,0f);
-        }
-    }
+   
     
     // void HitTimer()
     // {
