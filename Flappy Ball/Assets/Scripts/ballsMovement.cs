@@ -49,7 +49,7 @@ public class ballsMovement : MonoBehaviour
 
         Vector3 vector = new Vector3(horizontal,0,0);
         rb.AddForce(vector * speed * Time.deltaTime);
-
+        
     }
     void Jump()
     {
@@ -59,6 +59,7 @@ public class ballsMovement : MonoBehaviour
             {
                 rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
                 canDoubleJump = true;
+                Instantiate(SonidoSalto);
             }
             else
             {
@@ -114,6 +115,7 @@ public class ballsMovement : MonoBehaviour
         {
             coinsColected++;
             Destroy(col.gameObject);
+            Instantiate(coincollect);
         }
     }
 
