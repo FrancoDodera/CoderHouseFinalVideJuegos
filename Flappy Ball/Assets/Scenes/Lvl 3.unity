@@ -4025,6 +4025,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -5259,9 +5260,9 @@ GameObject:
   - component: {fileID: 973900813}
   - component: {fileID: 973900812}
   - component: {fileID: 973900811}
-  - component: {fileID: 973900810}
   - component: {fileID: 973900809}
   - component: {fileID: 973900815}
+  - component: {fileID: 973900816}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5285,38 +5286,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &973900810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973900808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a261b5d90f1b145b2000dcf6e1ed56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 700
-  jumpSpeed: 8
-  doubleJumpSpeed: 0
-  rb: {fileID: 973900809}
-  coinsColected: 0
-  lives: 3
-  respawnPoint: {x: 0, y: 0, z: 0}
-  timer: 0
-  hit: {fileID: 1788273609}
-  SonidoSalto: {fileID: 7651767515283635803, guid: 161173672ea6dee4b9d236bae5f16d9e,
-    type: 3}
-  coincollect: {fileID: 751603872316972146, guid: 31a55c5d78b87e44da7047482fae4c91,
-    type: 3}
-  vida3: {fileID: 2006970686}
-  vida2: {fileID: 1733234602}
-  vida1: {fileID: 217019931}
-  corazonVacio3: {fileID: 952343592}
-  corazonVacio2: {fileID: 1455697312}
-  corazonVacio1: {fileID: 1952419983}
-  textDetected: {fileID: 487734299}
 --- !u!23 &973900811
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5491,6 +5460,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &973900816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973900808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732426675df511345afcbb255219aa95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 700
+  jumpSpeed: 8
+  doubleJumpSpeed: 0
+  rb: {fileID: 973900809}
+  coinsColected: 0
+  lives: 3
+  respawnPoint: {x: 0, y: 0, z: 0}
+  timer: 0
+  hit: {fileID: 1788273609}
+  vida3: {fileID: 2006970686}
+  vida2: {fileID: 1733234602}
+  vida1: {fileID: 217019931}
+  corazonVacio3: {fileID: 952343592}
+  corazonVacio2: {fileID: 1455697312}
+  corazonVacio1: {fileID: 1952419983}
+  textDetected: {fileID: 487734299}
+  SonidoSalto: {fileID: 7651767515283635803, guid: 161173672ea6dee4b9d236bae5f16d9e,
+    type: 3}
+  coincollect: {fileID: 751603872316972146, guid: 31a55c5d78b87e44da7047482fae4c91,
+    type: 3}
 --- !u!1001 &977081357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6667,6 +6668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 1507122061}
   enemy: {fileID: 1507122058}
+  explosion: {fileID: 1630657815097115482, guid: f23d784d037a19a419588ed53255005d,
+    type: 3}
 --- !u!135 &1103860967
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8010,6 +8013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 527788254}
   enemy: {fileID: 527788251}
+  explosion: {fileID: 1630657815097115482, guid: f23d784d037a19a419588ed53255005d,
+    type: 3}
 --- !u!135 &1376976011
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11312,6 +11317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 1833011820}
   enemy: {fileID: 1833011817}
+  explosion: {fileID: 1630657815097115482, guid: f23d784d037a19a419588ed53255005d,
+    type: 3}
 --- !u!135 &1840626460
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12436,6 +12443,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 1000861249}
   enemy: {fileID: 1000861246}
+  explosion: {fileID: 1630657815097115482, guid: f23d784d037a19a419588ed53255005d,
+    type: 3}
 --- !u!135 &1964541684
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13152,6 +13161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 1666989765}
   enemy: {fileID: 1666989762}
+  explosion: {fileID: 1630657815097115482, guid: f23d784d037a19a419588ed53255005d,
+    type: 3}
 --- !u!135 &2106469461
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13355,6 +13366,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 837961797}
   enemy: {fileID: 837961794}
+  explosion: {fileID: 1630657815097115482, guid: f23d784d037a19a419588ed53255005d,
+    type: 3}
 --- !u!135 &2140356389
 SphereCollider:
   m_ObjectHideFlags: 0

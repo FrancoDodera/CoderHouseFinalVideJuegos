@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ballMovement : MonoBehaviour
+public class ballsMovement : MonoBehaviour
 {
     public float speed;
     public float jumpSpeed;
@@ -14,7 +14,15 @@ public class ballMovement : MonoBehaviour
     public float timer;
     float damage = 2f;
     public GameObject hit;
-
+    public GameObject vida3;
+    public GameObject vida2;
+    public GameObject vida1;
+    public GameObject corazonVacio3;
+    public GameObject corazonVacio2;
+    public GameObject corazonVacio1;
+    public GameObject textDetected;
+    public GameObject SonidoSalto;
+    public GameObject coincollect;
 
     void Start()
     {
@@ -51,8 +59,6 @@ public class ballMovement : MonoBehaviour
             {
                 rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
                 canDoubleJump = true;
-                Instantiate(SonidoSalto);
-
             }
             else
             {
@@ -108,7 +114,6 @@ public class ballMovement : MonoBehaviour
         {
             coinsColected++;
             Destroy(col.gameObject);
-            Instantiate(coincollect);
         }
     }
 
@@ -146,3 +151,4 @@ public class ballMovement : MonoBehaviour
         }
     }
 }
+
